@@ -9,9 +9,11 @@ const useFetch = (fetchUrl) => {
   // cibler un user dans le fetch de data via la méthode useDebugValue
   // useDebugValue(["User 6", data[5]]);
   // useDebugValue(JSON.stringify(data));
-
-  // Si je suis en mode dev et que React dev tools est ouvert pour inspecter le custom hook!
-  useDebugValue(data, (val) => JSON.stringify(val));
+  // Si je suis en mode dev et que React-dev-tools est ouvert pour inspecter le custom hook!
+  useDebugValue(data, (val) => {
+    alert("useDebugValue lancé");
+    return JSON.stringify(val);
+  });
 
   // Fetch
   useEffect(() => {
