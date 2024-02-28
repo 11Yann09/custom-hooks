@@ -5,7 +5,7 @@ import MyContacts from "./components/MyContacts";
 const App = () => {
   return (
     <div className="App">
-      <h1>Mes contacts</h1>
+      <h1>Mes Contacts</h1>
       <MyContacts />
       {/* <BtnHello /> */}
     </div>

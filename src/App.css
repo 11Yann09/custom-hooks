@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+/* CSS Table */
+
+#table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+#table th {
+  text-align: center;
+  background-color: lightcoral;
+  color: #fff;
+}
+
+#table td,
+#table hd {
+  border: 1px solid #ddd;
+  padding: 12px;
+}

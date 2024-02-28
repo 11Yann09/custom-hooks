@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import useUpdateTitle from "../hooks/useUpdateTitle";
+import TableUsers from "./TableUsers";
 
 const MyContacts = () => {
   const [users, setUsers] = useState([]);
@@ -35,6 +36,8 @@ const MyContacts = () => {
       ) : (
         <SearchInput searchStr={search} searchHanlder={handleChange} />
       )}
+
+      {<TableUsers dataArray={users} />}
     </>
   );
 };
