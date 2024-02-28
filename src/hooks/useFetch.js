@@ -15,17 +15,36 @@ const useFetch = (fetchUrl) => {
     return JSON.stringify(val);
   });
 
-  // Fetch
+  // Fetch async / await
   useEffect(() => {
-    fetch(fetchUrl)
-      .then((response) => response.json())
-      .then((json) => {
-        setData(json);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(fetchUrl);
+        if (!response.ok) {
+          throw Error("Pas de datas");
+        }
+
+        const fetchedData = await response.json();
+        setData(fetchedData);
         setIsLoading(false);
-      })
-      .catch((error) => console.log(error.message));
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchData();
   }, [fetchUrl]);
 
+  // Fetch
+  // useEffect(() => {
+  //   fetch(fetchUrl)
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setData(json);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // }, [fetchUrl]);
   // Return
   return { data, isLoading };
 };
