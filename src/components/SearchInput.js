@@ -4,6 +4,7 @@ const SearchInput = ({ searcStr, searchHanlder }) => {
   return (
     <>
       <input
+        id="search"
         type="text"
         placeholder="Chercher ..."
         value={searcStr}
