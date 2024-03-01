@@ -1,4 +1,4 @@
-const TableUsers = ({ dataArray }) => {
+const TableUsers = ({ dataArray, notification }) => {
   return (
     <table id="table">
       <thead>
@@ -10,6 +10,13 @@ const TableUsers = ({ dataArray }) => {
         </tr>
       </thead>
       <tbody>
+        {notification && (
+          <tr>
+            <td colSpan={4} style={{ color: "red" }}>
+              Veuillez Patienter ...
+            </td>
+          </tr>
+        )}
         {dataArray.map((user) => {
           return (
             <tr key={user.id}>

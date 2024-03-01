@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import SearchInput from "./components/SearchInput";
 import TableUsers from "./components/TableUsers";
 import { fakeUsersGenerator } from "./data/users";
@@ -10,6 +10,8 @@ const users = fakeUsersGenerator();
 const App = () => {
   const [search, setSearch] = useState("");
   const [resultSearch, setResultSearch] = useState([]);
+
+  const [isPending, startTransition] = useTransition();
 
   // Custom hook
   // const { data, isLoading } = useFetch(
@@ -29,7 +31,9 @@ const App = () => {
   useEffect(() => {
     if (search !== "") {
       // Filter
-      filterUsers();
+      startTransition(() => {
+        filterUsers();
+      });
     } else {
       setResultSearch([]);
     }
@@ -61,7 +65,9 @@ const App = () => {
         // search === "" ? (
         //   msgDisplay("Veuillez effectuer une recherche !", "green")
         // ) : (
-        search === "" ? null : <TableUsers dataArray={resultSearch} />
+        search === "" ? null : (
+          <TableUsers dataArray={resultSearch} notification={isPending} />
+        )
         // )
       }
     </div>
